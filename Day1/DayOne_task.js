@@ -67,3 +67,39 @@ function sortedSquarredArray2(array) {
 }
 
 sortedSquarredArray1(arr);
+
+// Question 2 // Method 1
+// Time Complexity = O(n)
+// Space Complexity  = O(1)
+
+const monotonicArr = [-3, 0, 1, 4, 6];
+const checkMonotonic = function (array) {
+  //write code here to return either true or false
+  if (array.length === 0) return true;
+
+  const first = array[0];
+  const last = array[array.length - 1];
+
+  if (first === last) {
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i + 1] !== array[i]) return false;
+    }
+  }
+  if (first > last) {
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i + 1] > array[i]) return false;
+    }
+  } else {
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i + 1] < array[i]) return false;
+    }
+  }
+
+  return true;
+};
+
+checkMonotonic(monotonicArr);
+
+// Input: [1,2,3,4,5] | Expected Output: true | Actual Output: true
+// Input: [5,4,3,2,1] | Expected Output: true | Actual Output: true
+// Input: [1,1,1,1,1] | Expected Output: true | Actual Output: true
